@@ -1,3 +1,7 @@
+
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge)](https://github.com/custom-components/hacs)
+
+
 # Interface of the visonic alarm using a powerlink2 with Home Assistant
 
 **based on an initial version by bertbert72, modified by mbuffat**

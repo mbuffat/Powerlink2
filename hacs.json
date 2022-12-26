@@ -1,5 +1,6 @@
 {
-    "name": "powerlink2 alarm visonic integration to HA",
-    "country": "FR",
-    "render_readme": true
+    "name": "powerlink2 + alarm visonic integration",
+    "country": ["FR","EU"],
+    "domains": ["sensor"],
+    "render_readme": True
 }
