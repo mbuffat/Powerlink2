@@ -4,6 +4,6 @@
   "version": "0.2",
   "documentation": "https://github.com/settings/repositories",
   "dependencies": ["mqtt"],
-  "codeowners": [bertbert72, mbuffat69],
+  "codeowners":  ["bertbert72","mbuffat69"],
   "requirements": []
 }
