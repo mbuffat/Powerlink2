@@ -1,8 +1,8 @@
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge)](https://github.com/custom-components/hacs)
 
-## Powerlink2
+## Features:
 
-create sensor and binary_sensor to interact with a visonic alarm using the mqtt protocol
+**Powerlink2** create sensor and binary_sensor to interact with a visonic alarm using the mqtt protocol
 
  - [see README.md](README.md) 
 
