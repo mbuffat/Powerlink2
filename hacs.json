@@ -2,5 +2,4 @@
     "name": "powerlink2 + alarm visonic integration",
     "country": ["FR","EU"],
     "domains": ["sensor"],
-    "render_readme": True
 }
