@@ -114,8 +114,11 @@ class Powerlink2(Entity):
         self._sensor_topic = config.get(CONF_SENSOR_TOPIC)
         self._battery_topic = config.get(CONF_SENSOR_BATTERY_TOPIC)
         # freanch translation
-        if config.get(CONF_LANG) == "FR":
+        self._lang = config.get(CONF_LANG)) 
+        _LOGGER.info("Powerlink2: lang [%s]",self._lang)
+        if self._lang == "FR":
             # french 
+            _LOGGER.info("Powerlink2: french lang [%s]",self._lang)
             STATUS_READY = "Pret"
             STATUS_NOT_READY = "Non pret"
             STATUS_EXIT = "Tempo sort"
