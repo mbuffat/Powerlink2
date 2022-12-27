@@ -22,24 +22,17 @@ from homeassistant.helpers.event import async_track_state_change_event
 from homeassistant.const import (CONF_HOST)
 import homeassistant.helpers.config_validation as cv
 
-VERSION = '0.2.0'
+VERSION = '0.2.1'
 
 DATA_POWERLINK2 = 'powerlink2'
 
 # status of powerlink (depend on the current langage: below for french)
-# french 
-STATUS_READY = "Pret"
-STATUS_NOT_READY = "Non pret"
-STATUS_EXIT = "Tempo sort"
-STATUS_HOME = "PART"
-STATUS_AWAY = "TOTL"
 # english 
-#STATUS_READY = "Ready"
-#STATUS_NOT_READY = "Not Ready"
-#STATUS_EXIT = "Exit Delay"
-#STATUS_HOME = "HOME"
-#STATUS_AWAY = "AWAY"
-
+STATUS_READY = "Ready"
+STATUS_NOT_READY = "Not Ready"
+STATUS_EXIT = "Exit Delay"
+STATUS_HOME = "HOME"
+STATUS_AWAY = "AWAY"
 #
 STATE_OK = "Ok"
 STATE_OPEN = "Open"
@@ -68,6 +61,7 @@ CONF_SENSOR_BATTERY_TOPIC = "sensor_battery_topic"
 CONF_IGNORE_FIRST_CMD = "ignore_first_cmd"
 CONF_ALARM_USER = "alarm_user"
 CONF_ALARM_PASSWORD = "alarm_password"
+CONF_LANG = "powerlink_lang"
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -81,6 +75,7 @@ PLATFORM_SCHEMA = vol.All(
         vol.Required(CONF_ALARM_USER): cv.string,
         vol.Required(CONF_ALARM_PASSWORD): cv.string,
         vol.Optional(CONF_IGNORE_FIRST_CMD, default=True): cv.boolean,
+        vol.Optional(CONF_LANG, default="EN"): cv.string,
     }))
 
 
@@ -118,6 +113,15 @@ class Powerlink2(Entity):
         self._state_topic = config.get(CONF_STATE_TOPIC)
         self._sensor_topic = config.get(CONF_SENSOR_TOPIC)
         self._battery_topic = config.get(CONF_SENSOR_BATTERY_TOPIC)
+        # freanch translation
+        if config.get(CONF_LANG) == "FR":
+            # french 
+            STATUS_READY = "Pret"
+            STATUS_NOT_READY = "Non pret"
+            STATUS_EXIT = "Tempo sort"
+            STATUS_HOME = "PART"
+            STATUS_AWAY = "TOTL"
+        #
         self._qos = 0
         self.async_connect()
         return
@@ -206,7 +210,7 @@ class Powerlink2(Entity):
                     new_status = 'not_ready'
                 elif curr_status == STATUS_EXIT:
                     new_status = 'pending'
-                elif curr_status == STATUS_PART:
+                elif curr_status == STATUS_HOME:
                     new_status = 'armed_home'
                 elif curr_status == STATUS_AWAY:
                     new_status = 'armed_away'

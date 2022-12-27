@@ -4,7 +4,7 @@
 
 **Powerlink2** create sensor and binary_sensor to interact with a visonic alarm using the mqtt protocol
 
- - [see README.md](README.md) 
+ - [see README.md](https://github.com/mbuffat/Powerlink2/blob/main/README.md) 
 
 ## Usage:
 
@@ -34,6 +34,7 @@ alarm_control_panel:
     ignore_first_cmd: True
     alarm_user: !secret alarm_user
     alarm_password: !secret alarm_password
+    powerlink_lang: FR    
 ```
 
 - Add to the mqtt.yaml file (in the configuration.yaml I use `mqtt: !include mqtt.yaml`) insert the mqtt sensors you want to use
