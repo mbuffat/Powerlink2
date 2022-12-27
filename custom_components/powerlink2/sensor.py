@@ -114,10 +114,11 @@ class Powerlink2(Entity):
         self._sensor_topic = config.get(CONF_SENSOR_TOPIC)
         self._battery_topic = config.get(CONF_SENSOR_BATTERY_TOPIC)
         # freanch translation
-        self._lang = config.get(CONF_LANG)) 
+        self._lang = config.get(CONF_LANG)
         _LOGGER.info("Powerlink2: lang [%s]",self._lang)
         if self._lang == "FR":
             # french 
+            global STATUS_READY,STATUS_NOT_READY,STATUS_EXIT,STATUS_HOME,STATUS_AWAY
             _LOGGER.info("Powerlink2: french lang [%s]",self._lang)
             STATUS_READY = "Pret"
             STATUS_NOT_READY = "Non pret"
@@ -296,6 +297,7 @@ class Powerlink2(Entity):
         r = requests.post(cmd_logout, data=payload, headers=self.getheaders())
         #r = await hass.async_add_executor_job(connection, cmd_logout, payload, self.getheaders())
         #r = connection(cmd_logout, payload, self.getheaders())
+        _LOGGER.info("do_setstatus: %s",r.content)
         
     async def async_added_to_hass(self):
         """Subscribe to MQTT events."""
