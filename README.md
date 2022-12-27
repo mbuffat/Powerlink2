@@ -8,12 +8,12 @@ create sensor and binary_sensor to interact with a visonic alarm using the mqtt 
 
 ### installation
 
-you can use HACS and install as a custom compoent, or download and 
+you can use HACS and install as a custom component, or download and 
 copy the custom_compents/powerlink2 to your home_assistant custom_components directory
 
 #### configuration of home assistant
 
-- in the configuration.yaml file define the control panel to control the alarm
+- in the configuration.yaml file, define the control panel to control the alarm
 
 ```
 alarm_control_panel:
@@ -75,7 +75,7 @@ currently support french "FR" or english "EN" for the powerlink2 interface.
       device_class: door 
 ```
 
-The following image show an exemple of the visonic2 interface on home-assistant
+The following image show an example of the visonic2 interface on home-assistant
 
 ![HA_visonic2.png](HA_visonic2.png)
 
