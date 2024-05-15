@@ -231,7 +231,7 @@ class Powerlink2(Entity):
                 if self._alarm_status != new_status:
                     self._state = new_status
                     self._alarm_status = new_status
-                    self.hass.async_create_task(mqtt.async_publish(self.hass, self._state_topic, self._alarm_status, self._qos, True))
+                    self.hass.create_task(mqtt.async_publish(self.hass, self._state_topic, self._alarm_status, self._qos, True))
                     _LOGGER.info("Alarm status: %s for topic %s ",self._alarm_status,self._state_topic)
                     self._status_last_sent = time.time()
             _LOGGER.debug("Index: " + str(self._curr_index))
@@ -271,10 +271,10 @@ class Powerlink2(Entity):
                 # Workaround for boolean sensor
                 status = STATE_OPEN
             if battery != BATTERY_UNDETERMINED:
-                self.hass.async_create_task(mqtt.async_publish(self.hass, self._battery_topic + zone, battery, self._qos, True))
+                self.hass.create_task(mqtt.async_publish(self.hass, self._battery_topic + zone, battery, self._qos, True))
                 _LOGGER.info("Setting battery to " + str(battery) + " for topic " + str(self._battery_topic + zone))
             if battery != BATTERY_LOW:
-                self.hass.async_create_task(mqtt.async_publish(self.hass, self._sensor_topic + zone, status, self._qos, True))
+                self.hass.create_task(mqtt.async_publish(self.hass, self._sensor_topic + zone, status, self._qos, True))
                 _LOGGER.info("Setting state to " + str(status) + " for topic " + str(self._sensor_topic + zone))
 
     def do_setstatus(self, target_status):
@@ -332,7 +332,7 @@ class Powerlink2(Entity):
         new_state = event.data.get("new_state")
         if new_state is None:
             return
-        self.hass.async_create_task(mqtt.async_publish(self.hass, self._state_topic, new_state.state, self._qos, True))
+        self.hass.create_task(mqtt.async_publish(self.hass, self._state_topic, new_state.state, self._qos, True))
         _LOGGER.info("state changed %s topic %s",str(new_state),self._state_topic)
         return
 
