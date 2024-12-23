@@ -1,7 +1,7 @@
 {
   "domain": "powerlink2",
   "name": "Powerlink2",
-  "version": "0.2",
+  "version": "0.2.1",
   "documentation": "https://github.com/settings/repositories",
   "dependencies": ["mqtt"],
   "codeowners":  ["bertbert72","mbuffat69"],
