@@ -8,12 +8,12 @@ create sensor and binary_sensor to interact with a visonic alarm using the mqtt 
 
 ### installation
 
- 1. copy the custom_compents/powerlink2 to your home_assistant custom_components directory
- 2. in the sensor.py file select the right translation for the status of the powerlink: currently french or english
- 3. you just comment the variable STATUS_xxxx at the begining of the file
- 4. configuration of home assistant
+you can use HACS and install as a custom component, or download and 
+copy the custom_compents/powerlink2 to your home_assistant custom_components directory
 
-- in the configuration.yaml file define the control panel to control the alarm
+#### configuration of home assistant
+
+- in the configuration.yaml file, define the control panel to control the alarm
 
 ```
 alarm_control_panel:
@@ -40,7 +40,10 @@ alarm_control_panel:
     ignore_first_cmd: True
     alarm_user: !secret alarm_user
     alarm_password: !secret alarm_password
+    powerlink_lang: EN
 ```
+
+currently support french "FR" or english "EN" for the powerlink2 interface.
 
 - in the mqtt.yaml file (in the configuration.yaml I use `mqtt: !include mqtt.yaml`) insert the mqtt sensors you want to use
 
@@ -72,7 +75,7 @@ alarm_control_panel:
       device_class: door 
 ```
 
-The following image show an exemple of the visonic2 interface on home-assistant
+The following image show an example of the visonic2 interface on home-assistant
 
 ![HA_visonic2.png](HA_visonic2.png)
 
