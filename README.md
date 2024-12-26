@@ -2,6 +2,12 @@
 
 **based on an initial version by bertbert72, modified by mbuffat**
 
+1. correction for new HA version: (as pointed by Ptrick Fulcheri)
+
+ remove hass.async_create_task and replace by hass.create_task
+
+2. remove config in configuration.yaml 
+
 ## Powerlink2
 
 create sensor and binary_sensor to interact with a visonic alarm using the mqtt protocol
@@ -14,6 +20,8 @@ copy the custom_compents/powerlink2 to your home_assistant custom_components dir
 #### configuration of home assistant
 
 - in the configuration.yaml file, define the control panel to control the alarm
+
+attention: useless for the new version of HA !!
 
 ```
 alarm_control_panel:
