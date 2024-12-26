@@ -2,7 +2,7 @@
 
 **based on an initial version by bertbert72, modified by mbuffat**
 
-1. correction for new HA version: (as pointed by Ptrick Fulcheri)
+1. correction for new HA version: (as pointed by Patrick Fulcheri)
 
  remove hass.async_create_task and replace by hass.create_task
 
